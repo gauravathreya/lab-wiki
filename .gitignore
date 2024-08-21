@@ -3,3 +3,7 @@
 .DS_Store
 /assets/.DS_Store
 *.DS_Store
+/technical/.DS_Store
+/technical/math_notebooks/.DS_Store
+/technical/EGTsims/.DS_Store
+/technical/MOGON/.DS_Store
