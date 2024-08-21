@@ -4842,10 +4842,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Using MOGON</span></span>
-  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../technical/MOGON/mogon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using MOGON</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -4901,7 +4903,9 @@ window.Quarto = {
 </div>
 <section id="one-dimensional-systems" class="level2">
 <h2 class="anchored" data-anchor-id="one-dimensional-systems">One dimensional systems</h2>
-<p>Such systems are characterized by equations of the form <br> $ = f(x) $ <br> As an example, I’ll use the equation <span class="math inline">\(\dot{x} = rx-x^3\)</span> for all analyses below</p>
+<p>Such systems are characterized by equations of the form <br> <span class="math display">\[
+\dot{x} = f(x)
+\]</span> <br> As an example, I’ll use the equation <span class="math inline">\(\dot{x} = rx-x^3\)</span> for all analyses below</p>
 <div id="cell-3" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-04-16T12:22:33.497522Z&quot;,&quot;start_time&quot;:&quot;2021-04-16T12:22:33.487591Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> xdot(x,t,r):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r<span class="op">*</span>x <span class="op">-</span> x<span class="op">**</span><span class="dv">3</span></span>

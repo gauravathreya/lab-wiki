@@ -24,7 +24,7 @@ website:
               href: technical/EGTsims/RPS.ipynb
             - text: "Hawk dove reciprocator"
               href: technical/EGTsims/hawk-dove-reciprocator.ipynb
-        - section: "Using MOGON"
+        - text: "Using MOGON"
           href: technical/MOGON/mogon.qmd
         
 
