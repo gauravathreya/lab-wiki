@@ -1,9 +1,11 @@
 {
-  "hash": "1ce2ecfb50aae26a87b5bc5c8db44988",
+  "hash": "6d26f387ce6cb9e8caa15f0583147b47",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Useful Links\"\nformat: html\neditor: source\nengine: knitr\n---\n\n\nDummy text for now",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Useful Links\"\nformat: html\neditor: source\nengine: knitr\n---\n\n\nDummy text for now\n\nCan I push??\n",
+    "supporting": [
+      "mogon_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
