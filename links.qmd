@@ -30,6 +30,11 @@ engine: knitr
 	- [SLURM tutorial series by the makers themselves](https://slurm.schedmd.com/tutorials.html)
 	- [SLURM directives to put into a bash script](https://www.youtube.com/watch?v=ChcsBE6tJr8&list=PL-g8n27Db1XfPrRvZMBSxK55_lIy39sqZ&index=1)
 	- [Using Python on the HPC](https://researchcomputing.princeton.edu/support/knowledge-base/python)
+- Generally useful fact: You can push your local git repo to two or more remote locations simultaneously. To set this up, we need to run the following locally on the terminal:
+```{.bash filename="Terminal"}
+git remote set-url origin --push --add <a remote>
+git remote set-url origin --push --add <another remote>
+```
 
 ---
 
