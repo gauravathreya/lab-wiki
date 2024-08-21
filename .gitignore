@@ -9,3 +9,5 @@
 /technical/MOGON/.DS_Store
 .Rproj.user
 *.Rproj
+.Rhistory
+*.Rhistory
