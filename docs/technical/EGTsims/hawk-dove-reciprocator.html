@@ -4861,7 +4861,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Technical knowledge</li><li class="breadcrumb-item"><a href="../../technical/EGTsims/RPS.html">Evolutionary game theory examples</a></li><li class="breadcrumb-item"><a href="../../technical/EGTsims/hawk-dove-reciprocator.html">Hawk dove reciprocator</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Studying rock paper scissors using Python</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<h1 class="title">Studying rock paper scissors using Python</h1>
 </div>
 
 
@@ -4879,34 +4879,26 @@ window.Quarto = {
 
 
 <div id="cell-1" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T16:45:18.046206Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T16:45:18.035069Z&quot;}" data-run_control="{&quot;marked&quot;:true}" data-execution_count="1">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ternary</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ternary.helpers <span class="im">import</span> project_point</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>init_printing()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Consider a modification to the classic Hawk-Dove game that introduces a third strategy. A <em>reciprocator</em>, denoted by R, responds to a hawk with a hawk strategy, and responds to a dove with a dove strategy. When two reciprocators interact, the payoff to each is given by <span class="math inline">\(V/2 - \mu C\)</span>. This value is obtained by simplifying <span class="math inline">\(\mu(V/2-C) + (1-\mu)V/2\)</span>, and thus, <span class="math inline">\(\mu\)</span> can be interpreted as the probability that a reciprocator will play a hawk strategy when it encounters another reciprocator.<br> <br> We can first calculate the payoff matrix. Here, the order of the rows (and columns) is H-D-R.</p>
 <div id="cell-3" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T16:45:20.584710Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T16:45:19.810391Z&quot;}" data-run_control="{&quot;marked&quot;:true}" data-execution_count="2">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>V,C,mu <span class="op">=</span> symbols(<span class="st">&#39; V C mu&#39;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Payoff_matrix <span class="op">=</span> Matrix([[V<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> C, V, V<span class="op">/</span><span class="dv">2</span><span class="op">-</span>C],[<span class="dv">0</span>,V<span class="op">/</span><span class="dv">2</span>,V<span class="op">/</span><span class="dv">2</span>],[V<span class="op">/</span><span class="dv">2</span><span class="op">-</span>C,V<span class="op">/</span><span class="dv">2</span>,V<span class="op">/</span><span class="dv">2</span><span class="op">-</span>mu<span class="op">*</span>C]])</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>Payoff_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="2">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}- C + \frac{V}{2} &amp; V &amp; - C + \frac{V}{2}\\0 &amp; \frac{V}{2} &amp; \frac{V}{2}\\- C + \frac{V}{2} &amp; \frac{V}{2} &amp; - C \mu + \frac{V}{2}\end{matrix}\right]\)</span></p>
 </div>
 </div>
 <p>Assuming that all strategies have a base fitness of <span class="math inline">\(\omega_0\)</span> and that the effect of the interactions is factored by a selection coefficient <span class="math inline">\(s\)</span>, we can obtain the fitness of each strategy:</p>
 <div id="cell-5" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T16:45:21.062521Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T16:45:21.048157Z&quot;}" data-execution_count="3">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Variables for fitness</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>wh,wd,wr <span class="op">=</span> symbols(<span class="st">&#39;omega_h omega_d omega_r&#39;</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4919,42 +4911,30 @@ window.Quarto = {
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>wh <span class="op">=</span> w0 <span class="op">+</span> s<span class="op">*</span>(PH<span class="op">*</span>(V<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> C)<span class="op">+</span>PD<span class="op">*</span>(V) <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>PD<span class="op">-</span>PH)<span class="op">*</span>(V<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> C))</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>wd <span class="op">=</span> w0 <span class="op">+</span> s<span class="op">*</span>(PH<span class="op">*</span><span class="dv">0</span> <span class="op">+</span> PD<span class="op">*</span>(V<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>PH<span class="op">-</span>PD)<span class="op">*</span>(V<span class="op">/</span><span class="dv">2</span>))</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>wr <span class="op">=</span> w0 <span class="op">+</span> s<span class="op">*</span>(PH<span class="op">*</span>(V<span class="op">/</span><span class="dv">2</span><span class="op">-</span>C)<span class="op">+</span>PD<span class="op">*</span>(V<span class="op">/</span><span class="dv">2</span>)<span class="op">+</span>(<span class="dv">1</span><span class="op">-</span>PH<span class="op">-</span>PD)<span class="op">*</span>(V<span class="op">/</span><span class="dv">2</span><span class="op">-</span>mu<span class="op">*</span>C))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div id="cell-6" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T16:45:22.381644Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T16:45:21.739137Z&quot;}" data-execution_count="4">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fitness of hawks</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>wh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
 <p><span class="math inline">\(\displaystyle \omega_{0} + s \left(P_{D} V + P_{H} \left(- C + \frac{V}{2}\right) + \left(- C + \frac{V}{2}\right) \left(- P_{D} - P_{H} + 1\right)\right)\)</span></p>
 </div>
 </div>
 <div id="cell-7" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T16:45:23.083619Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T16:45:22.507745Z&quot;}" data-execution_count="5">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fitness of doves</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>wd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
 <p><span class="math inline">\(\displaystyle \omega_{0} + s \left(\frac{P_{D} V}{2} + \frac{V \left(- P_{D} - P_{H} + 1\right)}{2}\right)\)</span></p>
 </div>
 </div>
 <div id="cell-8" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T16:45:23.768129Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T16:45:23.209089Z&quot;}" data-execution_count="6">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fitness of reciprocators</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>wr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="6">
 <p><span class="math inline">\(\displaystyle \omega_{0} + s \left(\frac{P_{D} V}{2} + P_{H} \left(- C + \frac{V}{2}\right) + \left(- C \mu + \frac{V}{2}\right) \left(- P_{D} - P_{H} + 1\right)\right)\)</span></p>
 </div>
 </div>
 <p>We can find the equations for nullclines - values at which two of the fitnesses are equal. Fixed points are given by the points at which all nullclines intersect.</p>
 <div id="cell-10" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T16:45:24.955209Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T16:45:24.341203Z&quot;}" data-execution_count="7">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> wh<span class="op">-</span>wd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>beta <span class="op">=</span> wd<span class="op">-</span>wr</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4966,14 +4946,11 @@ window.Quarto = {
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>fixed_points <span class="op">=</span> solve([alpha,beta],PH,PD)</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>h_d_nullcline, d_r_nullcline, h_r_nullcline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="7">
 <p><span class="math inline">\(\displaystyle \left( \left\{ P_{H} : \frac{2 C}{V} + \frac{P_{D} \left(- 2 C - V\right)}{V}\right\}, \  \left\{ P_{H} : - \frac{2 C P_{D} \mu}{2 C \mu - 2 C + V} + \frac{2 C \mu}{2 C \mu - 2 C + V}\right\}, \  \left\{ P_{H} : \frac{P_{D} \left(- 2 C \mu + 2 C + V\right)}{2 C \mu - 2 C} + 1\right\}\right)\)</span></p>
 </div>
 </div>
 <div id="cell-11" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T16:45:25.077579Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T16:45:25.061161Z&quot;}" data-execution_count="8">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> h_d_null_func(pd,v,c,mu):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    null_sol <span class="op">=</span> lambdify([V,C,PD],h_d_nullcline[PH],<span class="st">&#39;numpy&#39;</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    ph <span class="op">=</span> null_sol(v,c,pd)</span>
@@ -4994,22 +4971,16 @@ window.Quarto = {
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    pr <span class="op">=</span> <span class="dv">1</span><span class="op">-</span>pd<span class="op">-</span>ph</span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (pd,pr,ph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div id="cell-12" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T16:45:25.926654Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T16:45:25.474033Z&quot;}" data-execution_count="9">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Analytical solution for fixed points</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fixed_points</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="9">
 <p><span class="math inline">\(\displaystyle \left\{ P_{D} : \frac{4 C^{2} \mu - 4 C^{2} - 2 C V \mu + 2 C V}{4 C^{2} \mu - 4 C^{2} + V^{2}}, \  P_{H} : \frac{2 C V \mu}{4 C^{2} \mu - 4 C^{2} + V^{2}}\right\}\)</span></p>
 </div>
 </div>
 <p>We can find fixed points by plotting these nullclines on a simplex and looking at points of intersection: i.e plotting nullclines under the constraint that all are positive and that <span class="math inline">\(P_H + P_D + P_R \leq 1\)</span></p>
 <div id="cell-14" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T17:35:54.933449Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T17:35:54.886574Z&quot;}" data-execution_count="10">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> within_simplex(r): <span class="co">#Find out whether a given point lies within the S_1 simplex</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r[<span class="dv">0</span>]<span class="op">+</span>r[<span class="dv">1</span>]<span class="op">+</span>r[<span class="dv">2</span>] <span class="op">&lt;=</span> <span class="dv">1</span> <span class="kw">and</span> r[<span class="dv">0</span>] <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> r[<span class="dv">1</span>] <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> r[<span class="dv">2</span>] <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
@@ -5056,11 +5027,8 @@ window.Quarto = {
 <span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;blue&#39;</span></span>
 <span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;black&#39;</span>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div id="cell-15" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T17:35:55.514902Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T17:35:55.462660Z&quot;}" data-execution_count="13">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_ternary_plot(V,C,mu,w0<span class="op">=</span><span class="dv">0</span>,s<span class="op">=</span><span class="dv">1</span>,plot_field<span class="op">=</span><span class="va">True</span>,plot_nullclines<span class="op">=</span><span class="va">True</span>,save<span class="op">=</span><span class="va">False</span>,filename<span class="op">=</span><span class="st">&#39;&#39;</span>):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    figure, tax <span class="op">=</span> ternary.figure(scale<span class="op">=</span><span class="dv">1</span>)</span>
@@ -5141,7 +5109,6 @@ window.Quarto = {
 <span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> save:</span>
 <span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>        tax.savefig(<span class="bu">str</span>(filename<span class="op">+</span><span class="st">&quot;.png&quot;</span>))</span>
 <span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>    tax.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>&lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\m&#39;
 &lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\m&#39;
@@ -5150,10 +5117,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-16" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-21T17:36:43.227865Z&quot;,&quot;start_time&quot;:&quot;2021-05-21T17:36:40.313981Z&quot;}" data-execution_count="14">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>make_ternary_plot(<span class="dv">20</span>,<span class="dv">8</span>,<span class="fl">0.2</span>,save<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -5389,57 +5353,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');

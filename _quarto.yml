@@ -43,9 +43,8 @@ format:
       toc: true # do you want a table of contents, by default it floats as you scroll
       toc-location: left # where should it be displayed
       toc-title: "Sections"
-      code-fold: true # fold code up for neater display
-      code-tools: true # add a button at the top of doc to show all code
-      code-summary: "Show the code"
+      code-fold: false # fold code up for neater display
+      code-tools: false # add a button at the top of doc to show all code
       smooth-scroll: true
       embed-resources: true # output doc contains all info needed to display html
       fig-format: png

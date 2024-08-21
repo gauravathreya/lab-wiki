@@ -4876,7 +4876,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Technical knowledge</li><li class="breadcrumb-item"><a href="../../technical/math_notebooks/NLD.html">General math</a></li><li class="breadcrumb-item"><a href="../../technical/math_notebooks/NLD.html">Nonlinear dynamics</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Studying one-dimensional and two-dimensional systems</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<h1 class="title">Studying one-dimensional and two-dimensional systems</h1>
 </div>
 
 
@@ -4894,31 +4894,23 @@ window.Quarto = {
 
 
 <div id="cell-1" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-02T14:21:30.690449Z&quot;,&quot;start_time&quot;:&quot;2021-05-02T14:21:29.945724Z&quot;}" data-execution_count="1">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <section id="one-dimensional-systems" class="level2">
 <h2 class="anchored" data-anchor-id="one-dimensional-systems">One dimensional systems</h2>
 <p>Such systems are characterized by equations of the form <br> $ = f(x) $ <br> As an example, I’ll use the equation <span class="math inline">\(\dot{x} = rx-x^3\)</span> for all analyses below</p>
 <div id="cell-3" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-04-16T12:22:33.497522Z&quot;,&quot;start_time&quot;:&quot;2021-04-16T12:22:33.487591Z&quot;}" data-execution_count="2">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> xdot(x,t,r):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r<span class="op">*</span>x <span class="op">-</span> x<span class="op">**</span><span class="dv">3</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <section id="simple-plotting-to-find-fixed-points" class="level3">
 <h3 class="anchored" data-anchor-id="simple-plotting-to-find-fixed-points">Simple plotting to find fixed points</h3>
 <p>To start with, we can plot <span class="math inline">\(\dot{x}\)</span> vs <span class="math inline">\(x\)</span>. The points at which this curve intersects the x-axis represent <em>fixed points</em>, i.e points where <span class="math inline">\(\dot{x} = 0\)</span>. A system starting at a fixed point never leaves it. Further, every trajectory in a one dimensional system either approaches a fixed point or diverges to infinity.</p>
 <div id="cell-5" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-04-16T12:49:19.807865Z&quot;,&quot;start_time&quot;:&quot;2021-04-16T12:49:19.798673Z&quot;}" data-execution_count="3">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> xdot_vs_x(rlist):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> np.arange(rlist[<span class="dv">0</span>],rlist[<span class="dv">1</span>],rlist[<span class="dv">2</span>]):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="fl">0.01</span>)</span>
@@ -4935,13 +4927,9 @@ window.Quarto = {
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    plt.xlim([<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>])</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    plt.ylim([<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>])</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div id="cell-6" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-04-16T12:49:20.649707Z&quot;,&quot;start_time&quot;:&quot;2021-04-16T12:49:20.324262Z&quot;}" data-run_control="{&quot;marked&quot;:false}" data-execution_count="4">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>xdot_vs_x([<span class="op">-</span><span class="dv">6</span>,<span class="fl">6.1</span>,<span class="dv">6</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -4958,15 +4946,12 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="obtaining-an-analytic-solution">Obtaining an analytic solution</h4>
 <p>This can also be seen by actually solving the differential equation. I will use sympy to analytically solve the differential equation</p>
 <div id="cell-10" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-04-16T11:22:36.702668Z&quot;,&quot;start_time&quot;:&quot;2021-04-16T11:22:36.266861Z&quot;}" data-run_control="{&quot;marked&quot;:true}" data-execution_count="5">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Solving the given ODE symbolically</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>n,r <span class="op">=</span> symbols(<span class="st">&#39;n r&#39;</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>init_printing()</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>n_dot <span class="op">=</span> r<span class="op">*</span>n <span class="op">-</span> n<span class="op">**</span><span class="dv">3</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>solve(n_dot,n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
 <p><span class="math inline">\(\displaystyle \left[ 0, \  - \sqrt{r}, \  \sqrt{r}\right]\)</span></p>
 </div>
@@ -4976,8 +4961,6 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="numeric-integration-to-find-trajectories">Numeric integration to find trajectories</h4>
 <p>Since solving ODEs analytically is not always feasible, we could also use numerical integration to obtain the <em>trajectory</em>, i.e the values of <span class="math inline">\(x(t)\)</span> as <span class="math inline">\(t\)</span> varies, given an initial value <span class="math inline">\(x_0\)</span>. Here, I use the <em>odeint</em> package from scipy.</p>
 <div id="cell-12" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-04-16T12:38:45.998579Z&quot;,&quot;start_time&quot;:&quot;2021-04-16T12:38:45.979300Z&quot;}" data-execution_count="6">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trajectory(rlist,x0,t<span class="op">=</span><span class="dv">10</span>,tstep<span class="op">=</span><span class="fl">0.01</span>):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    xlist <span class="op">=</span> np.arange(<span class="dv">0</span>,t,tstep)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> rlist:</span>
@@ -4988,13 +4971,9 @@ window.Quarto = {
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">&#39;time&#39;</span>)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">&#39;x&#39;</span>)</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div id="cell-13" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-04-16T12:38:46.861473Z&quot;,&quot;start_time&quot;:&quot;2021-04-16T12:38:46.533494Z&quot;}" data-scrolled="false" data-execution_count="7">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>trajectory(np.arange(<span class="op">-</span><span class="dv">4</span>,<span class="fl">4.1</span>,<span class="dv">4</span>),<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -5009,8 +4988,6 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="dependence-on-parameters">Dependence on parameters</h3>
 <p>Finally, we can examine how the number of fixed points varies as we vary parameters. In our case, the system has a single parameter: <span class="math inline">\(r\)</span>. <br> <br> We examine the relationship between fixed points and parameter values by plotting a <em>bifurcation diagram</em>. In this case, we plot <span class="math inline">\(r\)</span> against the corresponding equilibrium values of <span class="math inline">\(x\)</span>, for various initial values <span class="math inline">\(x(0)\)</span>.</p>
 <div id="cell-15" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-04-16T12:37:45.263246Z&quot;,&quot;start_time&quot;:&quot;2021-04-16T12:37:45.243158Z&quot;}" data-execution_count="8">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bifurcation(r_range):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    rvals <span class="op">=</span> np.arange(r_range[<span class="dv">0</span>],r_range[<span class="dv">1</span>],r_range[<span class="dv">2</span>])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    eq_list <span class="op">=</span> []</span>
@@ -5027,13 +5004,9 @@ window.Quarto = {
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">&#39;x*&#39;</span>)</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div id="cell-16" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-04-16T12:37:47.599066Z&quot;,&quot;start_time&quot;:&quot;2021-04-16T12:37:45.728646Z&quot;}" data-execution_count="9">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bifurcation([<span class="op">-</span><span class="dv">4</span>,<span class="fl">4.1</span>,<span class="fl">0.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -5056,8 +5029,6 @@ window.Quarto = {
 \]</span> <br></p>
 <p>As before, we can begin by plotting the phase portrait. Here, the phase portrait is two-dimensional, and you can think of <span class="math inline">\(f(x,y)\)</span> and <span class="math inline">\(g(x,y)\)</span> as representing the flow on a plane.</p>
 <div id="cell-19" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-02T14:23:53.499029Z&quot;,&quot;start_time&quot;:&quot;2021-05-02T14:23:53.477724Z&quot;}" data-execution_count="10">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> twoD_phase_portrait(var,var_dot,xlims<span class="op">=</span>[<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">40</span>],ylims<span class="op">=</span>[<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">40</span>],plot_nullclines<span class="op">=</span><span class="va">True</span>,save<span class="op">=</span><span class="va">False</span>,filename<span class="op">=</span><span class="st">&#39;2D_portrait.png&#39;</span>):    </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#convert the symbolic math into a python function</span></span>
@@ -5141,33 +5112,23 @@ window.Quarto = {
 <span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> save:</span>
 <span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>        plt.savefig(filename)</span>
 <span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div id="cell-20" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-02T14:32:39.041950Z&quot;,&quot;start_time&quot;:&quot;2021-05-02T14:32:39.019958Z&quot;}" data-execution_count="11">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x,y <span class="op">=</span> symbols(<span class="st">&#39;x y&#39;</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>init_printing()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div id="cell-21" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-02T14:32:40.293491Z&quot;,&quot;start_time&quot;:&quot;2021-05-02T14:32:39.862433Z&quot;}" data-execution_count="12">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#write the differential equations here</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x_dot, y_dot <span class="op">=</span> cos(x<span class="op">-</span>y), sin(x<span class="op">*</span>y<span class="op">+</span><span class="dv">1</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>x_dot, y_dot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="12">
 <p><span class="math inline">\(\displaystyle \left( \cos{\left(x - y \right)}, \  \sin{\left(x y + 1 \right)}\right)\)</span></p>
 </div>
 </div>
 <div id="cell-22" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-02T14:26:17.722652Z&quot;,&quot;start_time&quot;:&quot;2021-05-02T14:26:17.010331Z&quot;}" data-execution_count="13">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>twoD_phase_portrait([x,y],[x_dot,y_dot],xlims<span class="op">=</span>[<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>],ylims<span class="op">=</span>[<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>],plot_nullclines<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -5180,10 +5141,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="nullclines">Nullclines</h3>
 <p>One useful notion is that of a <em>nullcline</em>. Nullclines are defined as the curves where either <span class="math inline">\(\dot{x} = 0\)</span> or <span class="math inline">\(\dot{y} = 0\)</span>. Fixed points are points at which nullclines intersect.</p>
 <div id="cell-24" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-02T14:32:46.605375Z&quot;,&quot;start_time&quot;:&quot;2021-05-02T14:32:45.187510Z&quot;}" data-execution_count="14">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>twoD_phase_portrait([x,y],[x_dot,y_dot],xlims<span class="op">=</span>[<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>],ylims<span class="op">=</span>[<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -5193,12 +5151,9 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-25" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-02T14:32:55.490652Z&quot;,&quot;start_time&quot;:&quot;2021-05-02T14:32:49.664302Z&quot;}" data-execution_count="15">
-<details class="code-fold">
-<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Number of fixed points should equal the number of times the nullclines intersect</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fixed_points <span class="op">=</span> solve([x_dot,y_dot],[x,y])</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(fixed_points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="15">
 <p><span class="math inline">\(\displaystyle 8\)</span></p>
 </div>
@@ -5432,57 +5387,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
