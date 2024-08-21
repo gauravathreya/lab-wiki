@@ -1,0 +1,43 @@
+---
+title: "Useful Links"
+format: html
+editor: source
+engine: knitr
+---
+
+## Data visualization
+
+- [ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/index.html)
+- [A collection of graphs made in R](https://www.r-graph-gallery.com/)
+- [A collection of graphs made in Python](https://python-graph-gallery.com/)
+- [A color scheme generator](https://paletton.com/) for making better plots: Generates complimentary colors, lets you vary hue, provides simulations of various types of colorblindness as well as common lightness/hue/saturation changes that can be caused by faulty screens.
+	
+---
+
+## Coding
+
+- [The good research coding handbook](https://goodresearch.dev/)
+- [Pro git](https://git-scm.com/book/en/v2), an introduction to using git and GitHub for version control
+- The [tidyverse](https://www.tidyverse.org/), a set of packages for data wrangling and data visualization in R       
+- [Using the tidyverse for data wrangling in R](https://www.youtube.com/playlist?list=PL9HYL-VRX0oQOWAFoKHFQAsWAI3ImbNPk)
+- [Hands-on tutorial on using dplyr for data wrangling in R](https://www.youtube.com/watch?v=jWjqLW-u3hc)
+- [A mapping of MATLAB functions to numpy functions in Python](https://numpy.org/doc/stable/user/numpy-for-matlab-users.html)
+- [python-ternary](https://github.com/marcharper/python-ternary), a library for making ternary plots in Python using matplotlib
+- High-performance computing using SLURM:
+  	- [Introduction to SLURM and job scripting](https://www.youtube.com/watch?v=grZVs1UUxug)
+	- [Creating batch scripts for SLURM](https://www.youtube.com/watch?v=LRJMQO7Ercw)
+	- [SLURM tutorial series by the makers themselves](https://slurm.schedmd.com/tutorials.html)
+	- [SLURM directives to put into a bash script](https://www.youtube.com/watch?v=ChcsBE6tJr8&list=PL-g8n27Db1XfPrRvZMBSxK55_lIy39sqZ&index=1)
+	- [Using Python on the HPC](https://researchcomputing.princeton.edu/support/knowledge-base/python)
+
+---
+
+## Reading, writing, and presentation
+
+- [Playlist on academic writing](https://www.youtube.com/playlist?list=PLT9dtLV29xu8NkipEERDB2I62tLyhTJym) by the Leadership Lab at UChicago
+- [How to speak](https://www.youtube.com/watch?v=Unzc731iCUY) by Patrick Winston at MIT
+- [List of commonly used phrases in academic writing](https://www.phrasebank.manchester.ac.uk/)
+- [Ten simple rules for making good oral presentations](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030077)
+- [How to give a theory talk](https://static1.squarespace.com/static/5b67b79831d4dfab6ca1b892/t/615a57a96e8fa355f29daf2f/1633310633185/Theory_Presentation_Advice.pdf) by Shengwu Li
+

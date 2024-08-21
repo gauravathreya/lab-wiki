@@ -1,0 +1,1 @@
+This site has been published using Quarto Pub and is available at https://thepandalorian.quarto.pub/aging-and-the-hyperfunction-theory/. Note that the publishing is automated through a GitHub action and will happen every time I push to this repo.

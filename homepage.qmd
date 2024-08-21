@@ -1,0 +1,24 @@
+---
+title: "Kokkonuts wiki homepage"
+format: html
+editor: source
+engine: knitr
+---
+
+<!--- below block is for justifying text --->
+```{css, echo = FALSE}
+.justify {
+  text-align: justify
+}
+```
+
+::: {.justify}
+
+## Kokkonuts wiki
+
+The purpose of this wiki is to collate useful information and technical knowledge. For now, I (shikhara) am just porting some notebooks I already had. Will hopefully flesh out the wiki later.
+
+![](assets/img/orange_pony.png)
+
+
+:::

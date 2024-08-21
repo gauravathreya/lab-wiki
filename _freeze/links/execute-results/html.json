@@ -1,0 +1,15 @@
+{
+  "hash": "16993a1bcb377089eb3e9ef6147492fe",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Useful Links\"\nformat: html\neditor: source\nengine: knitr\n---\n\n\n## Data visualization\n\n- [ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)\n- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/index.html)\n- [A collection of graphs made in R](https://www.r-graph-gallery.com/)\n- [A collection of graphs made in Python](https://python-graph-gallery.com/)\n- [A color scheme generator](https://paletton.com/) for making better plots: Generates complimentary colors, lets you vary hue, provides simulations of various types of colorblindness as well as common lightness/hue/saturation changes that can be caused by faulty screens.\n\t\n---\n\n## Coding\n\n- [The good research coding handbook](https://goodresearch.dev/)\n- [Pro git](https://git-scm.com/book/en/v2), an introduction to using git and GitHub for version control\n- The [tidyverse](https://www.tidyverse.org/), a set of packages for data wrangling and data visualization in R       \n- [Using the tidyverse for data wrangling in R](https://www.youtube.com/playlist?list=PL9HYL-VRX0oQOWAFoKHFQAsWAI3ImbNPk)\n- [Hands-on tutorial on using dplyr for data wrangling in R](https://www.youtube.com/watch?v=jWjqLW-u3hc)\n- [A mapping of MATLAB functions to numpy functions in Python](https://numpy.org/doc/stable/user/numpy-for-matlab-users.html)\n- [python-ternary](https://github.com/marcharper/python-ternary), a library for making ternary plots in Python using matplotlib\n- High-performance computing using SLURM:\n  \t- [Introduction to SLURM and job scripting](https://www.youtube.com/watch?v=grZVs1UUxug)\n\t- [Creating batch scripts for SLURM](https://www.youtube.com/watch?v=LRJMQO7Ercw)\n\t- [SLURM tutorial series by the makers themselves](https://slurm.schedmd.com/tutorials.html)\n\t- [SLURM directives to put into a bash script](https://www.youtube.com/watch?v=ChcsBE6tJr8&list=PL-g8n27Db1XfPrRvZMBSxK55_lIy39sqZ&index=1)\n\t- [Using Python on the HPC](https://researchcomputing.princeton.edu/support/knowledge-base/python)\n\n---\n\n## Reading, writing, and presentation\n\n- [Playlist on academic writing](https://www.youtube.com/playlist?list=PLT9dtLV29xu8NkipEERDB2I62tLyhTJym) by the Leadership Lab at UChicago\n- [How to speak](https://www.youtube.com/watch?v=Unzc731iCUY) by Patrick Winston at MIT\n- [List of commonly used phrases in academic writing](https://www.phrasebank.manchester.ac.uk/)\n- [Ten simple rules for making good oral presentations](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030077)\n- [How to give a theory talk](https://static1.squarespace.com/static/5b67b79831d4dfab6ca1b892/t/615a57a96e8fa355f29daf2f/1633310633185/Theory_Presentation_Advice.pdf) by Shengwu Li\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

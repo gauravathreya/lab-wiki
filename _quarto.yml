@@ -1,0 +1,55 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Kokkonuts wiki and resources"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - text: "Home"
+        href: homepage.qmd
+      - text: "Useful links"
+        href: links.qmd
+      - section: "Technical knowledge"
+        contents:
+        - section: "General math"
+          contents:
+            - text: "Nonlinear dynamics"
+              href: technical/math_notebooks/NLD.ipynb
+        - section: "Evolutionary game theory examples"
+          contents:
+            - text: "Rock paper scissors"
+              href: technical/EGTsims/RPS.ipynb
+            - text: "Hawk dove reciprocator"
+              href: technical/EGTsims/hawk-dove-reciprocator.ipynb
+        - section: "Using MOGON"
+          href: technical/MOGON/mogon.qmd
+        
+
+
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://github.com/kokkonut-case/lab-wiki
+format:
+  html:
+      theme: # browse these here: https://quarto.org/docs/output-formats/html-themes.html
+        light: minty
+        dark: darkly
+      max-width: 1800px # adjust if your plots don't fit or you want more or less whitespace
+      toc: true # do you want a table of contents, by default it floats as you scroll
+      toc-location: left # where should it be displayed
+      toc-title: "Sections"
+      code-fold: true # fold code up for neater display
+      code-tools: true # add a button at the top of doc to show all code
+      code-summary: "Show the code"
+      smooth-scroll: true
+      embed-resources: true # output doc contains all info needed to display html
+      fig-format: png
+      fig-dpi: 500
+
+execute:
+  freeze: auto

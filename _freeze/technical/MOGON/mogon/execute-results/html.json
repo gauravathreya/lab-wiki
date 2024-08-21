@@ -1,0 +1,15 @@
+{
+  "hash": "1ce2ecfb50aae26a87b5bc5c8db44988",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Useful Links\"\nformat: html\neditor: source\nengine: knitr\n---\n\n\nDummy text for now",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
