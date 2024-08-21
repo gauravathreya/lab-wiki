@@ -20,10 +20,10 @@ website:
               href: technical/math_notebooks/NLD.ipynb
         - section: "Evolutionary game theory examples"
           contents:
+            - text: "Introduction: Hawks and Doves"
+              href: technical/EGTsims/hawk-dove-reciprocator.ipynb
             - text: "Rock paper scissors"
               href: technical/EGTsims/RPS.ipynb
-            - text: "Hawk dove reciprocator"
-              href: technical/EGTsims/hawk-dove-reciprocator.ipynb
         - text: "Using MOGON"
           href: technical/MOGON/mogon.qmd
         

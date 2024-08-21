@@ -4743,7 +4743,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Technical knowledge</li><li class="breadcrumb-item"><a href="../../technical/EGTsims/RPS.html">Evolutionary game theory examples</a></li><li class="breadcrumb-item"><a href="../../technical/EGTsims/RPS.html">Rock paper scissors</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Technical knowledge</li><li class="breadcrumb-item"><a href="../../technical/EGTsims/hawk-dove-reciprocator.html">Evolutionary game theory examples</a></li><li class="breadcrumb-item"><a href="../../technical/EGTsims/RPS.html">Rock paper scissors</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label onclick="window.quartoOpenSearch();">
@@ -4830,14 +4830,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../technical/EGTsims/RPS.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Rock paper scissors</span></a>
+  <a href="../../technical/EGTsims/hawk-dove-reciprocator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction: Hawks and Doves</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../technical/EGTsims/hawk-dove-reciprocator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Hawk dove reciprocator</span></a>
+  <a href="../../technical/EGTsims/RPS.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Rock paper scissors</span></a>
   </div>
 </li>
       </ul>
@@ -4856,7 +4856,11 @@ window.Quarto = {
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#formulating-the-payoffs" id="toc-formulating-the-payoffs" class="nav-link active" data-scroll-target="#formulating-the-payoffs">Formulating the payoffs</a></li>
+  <li><a href="#a-generalized-rock-paper-scissors-game" id="toc-a-generalized-rock-paper-scissors-game" class="nav-link active" data-scroll-target="#a-generalized-rock-paper-scissors-game">A generalized rock paper scissors game</a>
+  <ul class="collapse">
+  <li><a href="#the-payoff-matrix" id="toc-the-payoff-matrix" class="nav-link" data-scroll-target="#the-payoff-matrix">The payoff matrix</a></li>
+  <li><a href="#fitnesses" id="toc-fitnesses" class="nav-link" data-scroll-target="#fitnesses">Fitnesses</a></li>
+  </ul></li>
   <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting">Plotting</a></li>
   <li><a href="#analyzing-the-dynamics" id="toc-analyzing-the-dynamics" class="nav-link" data-scroll-target="#analyzing-the-dynamics">Analyzing the dynamics</a>
   <ul class="collapse">
@@ -4874,7 +4878,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Technical knowledge</li><li class="breadcrumb-item"><a href="../../technical/EGTsims/RPS.html">Evolutionary game theory examples</a></li><li class="breadcrumb-item"><a href="../../technical/EGTsims/RPS.html">Rock paper scissors</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Technical knowledge</li><li class="breadcrumb-item"><a href="../../technical/EGTsims/hawk-dove-reciprocator.html">Evolutionary game theory examples</a></li><li class="breadcrumb-item"><a href="../../technical/EGTsims/RPS.html">Rock paper scissors</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Studying rock paper scissors using Python</h1>
 </div>
@@ -4903,9 +4907,20 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>init_printing()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="formulating-the-payoffs" class="level1">
-<h1>Formulating the payoffs</h1>
-<p>We can analyze a generalized rock paper scissors game by formulating a general payoff matrix.</p>
+<section id="a-generalized-rock-paper-scissors-game" class="level1">
+<h1>A generalized rock paper scissors game</h1>
+<p>Imagine a population with three types of individuals, which we will call <span class="math inline">\(R\)</span>, <span class="math inline">\(P\)</span>, and <span class="math inline">\(S\)</span>. Individuals compete over resources. When two individuals of the same type interact, they obtain neither a benefit or a cost. However, if individuals of two different types interact, they fight until one defeats the other. The winner of the fight gets a benefit of <span class="math inline">\(V\)</span>, and the loser incurs a cost <span class="math inline">\(C\)</span>. Further, the three types obey the following rules:</p>
+<ol type="1">
+<li>R always defeats S</li>
+<li>S always defeats P</li>
+<li>P always defeats R</li>
+</ol>
+<p>What can we say about how the distribution of types changes over time?</p>
+<section id="the-payoff-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="the-payoff-matrix">The payoff matrix</h2>
+<p>Thre payoff matrix for our game is given by</p>
+<p><span class="math display">\[\mathbf{A} = \begin{bmatrix} 0 &amp; -C &amp; V \\ V &amp; 0 &amp; -C \\ -C &amp; V &amp; 0 \end{bmatrix}\]</span></p>
+<p>We can rewrite this in Python symbolic math:</p>
 <div id="cell-4" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:00:53.382262Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:00:52.410419Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>V,C <span class="op">=</span> symbols(<span class="st">&#39;V C&#39;</span>) <span class="co">#Value and Cost</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -4916,7 +4931,15 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0 &amp; - C &amp; V\\V &amp; 0 &amp; - C\\- C &amp; V &amp; 0\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="cell-5" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:00:54.544750Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:00:54.539733Z&quot;}" data-execution_count="4">
+</section>
+<section id="fitnesses" class="level2">
+<h2 class="anchored" data-anchor-id="fitnesses">Fitnesses</h2>
+<p>As in the hawk dove case, the fitness of the <span class="math inline">\(i^{\text{th}}\)</span> strategy is given by</p>
+<p><span class="math display">\[
+w_i = w_0 + s\left(\mathbf{p}^{\mathrm{T}}\mathbf{Ap}\right)
+\]</span></p>
+<p>where <span class="math inline">\(w_0\)</span> is a baseline fitness, <span class="math inline">\(s\)</span> parametrizes the relative importance of the game for fitness, and <span class="math inline">\(\mathbf{p} = (p_R, p_P, p_S)\)</span> is the vector describing the frequencies of the three types</p>
+<div id="cell-6" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:00:54.544750Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:00:54.539733Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Variables for fitness</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>wr,wp,ws <span class="op">=</span> symbols(<span class="st">&#39;omega_R omega_P omega_S&#39;</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4927,7 +4950,7 @@ window.Quarto = {
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>alpha,beta <span class="op">=</span> symbols(<span class="st">&#39;alpha beta&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Payoffs for each strategy are obtained from the matrix</p>
-<div id="cell-7" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:00:57.875666Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:00:57.362906Z&quot;}" data-execution_count="5">
+<div id="cell-8" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:00:57.875666Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:00:57.362906Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fitness_payoffs <span class="op">=</span> Payoff_matrix<span class="op">*</span>Matrix([pr,pp,(<span class="dv">1</span><span class="op">-</span>pr<span class="op">-</span>pp)])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fitness_payoffs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4935,14 +4958,14 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}- C p_{P} + V \left(- p_{P} - p_{R} + 1\right)\\- C \left(- p_{P} - p_{R} + 1\right) + V p_{R}\\- C p_{R} + V p_{P}\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="cell-8" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:00:59.654447Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:00:59.642592Z&quot;}" data-execution_count="6">
+<div id="cell-9" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:00:59.654447Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:00:59.642592Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Payoff equations for the three strategies</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>wr <span class="op">=</span> w0 <span class="op">+</span> s<span class="op">*</span>(fitness_payoffs[<span class="dv">0</span>])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>wp <span class="op">=</span> w0 <span class="op">+</span> s<span class="op">*</span>(fitness_payoffs[<span class="dv">1</span>])</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ws <span class="op">=</span> w0 <span class="op">+</span> s<span class="op">*</span>(fitness_payoffs[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If we wish, we can also plot nullclines (curves for which fitnesses of two strategies are equal). Fixed points are points at which all nullclines intersect</p>
-<div id="cell-10" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:01:02.254511Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:01:01.660016Z&quot;}" data-execution_count="7">
+<div id="cell-11" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:01:02.254511Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:01:01.660016Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> wr<span class="op">-</span>wp</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>beta <span class="op">=</span> wp<span class="op">-</span>ws</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4960,10 +4983,11 @@ window.Quarto = {
 </div>
 <p>Thus, the internal fixed point is always at (1/3,1/3,1/3).</p>
 </section>
+</section>
 <section id="plotting" class="level1">
 <h1>Plotting</h1>
 <p>To implement these nullclines, we need to convert the nullcline equations from symbolic math to Python functions.</p>
-<div id="cell-14" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:01:05.183751Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:01:05.166693Z&quot;}" data-execution_count="14">
+<div id="cell-15" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:01:05.183751Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:01:05.166693Z&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> r_p_null_func(PR,v,c):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    null_sol <span class="op">=</span> lambdify([V,C,pr],r_p_nullcline[pp],<span class="st">&#39;numpy&#39;</span>)</span>
@@ -5003,9 +5027,11 @@ window.Quarto = {
 <span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (PR,PP,PS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Since all the frequency values are constrained to lie on a simplex (because sum of all frequencies equals 1), we can plot the system on a <em>ternary plot</em>. In a ternary plot, Cartesian distance is converted to distance from the edges of an equilateral triangle. The below functions are to assist with this.<br> To plot the vector field for trajectories, I have used the replicator equation:</p>
-<p>[ (t) = (<em>{s} - {})f</em>{s}(t) ]</p>
+<p><span class="math display">\[
+\dot{f_s}(t) = (\omega_{s} - \bar{\omega})f_{s}(t)
+\]</span></p>
 <p>where <span class="math inline">\(f_s\)</span> is the frequency of strategy s, <span class="math inline">\(\omega_s\)</span> is the fitness of strategy s, and <span class="math inline">\(\bar{\omega}\)</span> is the mean fitness of the population.</p>
-<div id="cell-16" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:01:08.857638Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:01:08.609815Z&quot;}" data-execution_count="9">
+<div id="cell-17" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:01:08.857638Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:01:08.609815Z&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> within_simplex(r): <span class="co">#Find out whether a given point lies within the S_1 simplex</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
@@ -5060,7 +5086,7 @@ window.Quarto = {
 <span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> mpatches.FancyArrow(<span class="dv">0</span>, <span class="fl">0.5</span><span class="op">*</span>height, width, <span class="dv">0</span>, length_includes_head<span class="op">=</span><span class="va">True</span>, head_width<span class="op">=</span><span class="fl">0.75</span><span class="op">*</span>height )</span>
 <span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-17" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:02:34.756722Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:02:34.726889Z&quot;}" data-execution_count="10">
+<div id="cell-18" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:02:34.756722Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:02:34.726889Z&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_ternary_plot(V,C,w0<span class="op">=</span><span class="dv">0</span>,s<span class="op">=</span><span class="dv">1</span>,plot_field<span class="op">=</span><span class="va">True</span>,plot_nullclines<span class="op">=</span><span class="va">False</span>,save<span class="op">=</span><span class="va">False</span>,filename<span class="op">=</span><span class="st">&#39;&#39;</span>):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    figure, tax <span class="op">=</span> ternary.figure(scale<span class="op">=</span><span class="dv">1</span>)</span>
@@ -5155,7 +5181,7 @@ window.Quarto = {
 <h1>Analyzing the dynamics</h1>
 <section id="case-1-v-c" class="level2">
 <h2 class="anchored" data-anchor-id="case-1-v-c">Case 1: V &gt; C</h2>
-<div id="cell-20" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:01:46.719242Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:01:45.186721Z&quot;}" data-execution_count="11">
+<div id="cell-21" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:01:46.719242Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:01:45.186721Z&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that I&#39;m not plotting nullclines here.</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>make_ternary_plot(<span class="dv">10</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5171,7 +5197,7 @@ window.Quarto = {
 </section>
 <section id="case-2-v-c" class="level2">
 <h2 class="anchored" data-anchor-id="case-2-v-c">Case 2: V = C</h2>
-<div id="cell-23" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:02:40.427772Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:02:38.677084Z&quot;}" data-execution_count="12">
+<div id="cell-24" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T21:02:40.427772Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T21:02:38.677084Z&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>make_ternary_plot(<span class="dv">10</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -5185,7 +5211,7 @@ window.Quarto = {
 </section>
 <section id="case-3-v-c" class="level2">
 <h2 class="anchored" data-anchor-id="case-3-v-c">Case 3: V &lt; C</h2>
-<div id="cell-26" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T20:46:48.155791Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T20:46:46.334051Z&quot;}" data-execution_count="13">
+<div id="cell-27" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-11-01T20:46:48.155791Z&quot;,&quot;start_time&quot;:&quot;2021-11-01T20:46:46.334051Z&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>make_ternary_plot(<span class="dv">0</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
