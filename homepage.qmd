@@ -18,6 +18,11 @@ engine: knitr
 
 The purpose of this wiki is to collate useful information and technical knowledge. For now, I (shikhara) am just porting some notebooks I already had. Will hopefully flesh out the wiki later.
 
+To go back to the kokkonutscase repository of scripts, click [here](https://github.com/Kokkonut-case).
+<br>
+To visit the kokkonuts lab group webpage, click [here](https://www.kokkonuts.org/).
+<br>
+
 ![](assets/img/orange_pony.png)
 
 

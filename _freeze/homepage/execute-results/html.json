@@ -1,9 +1,11 @@
 {
-  "hash": "be62e1e404a72c7038ae9f01528067a2",
+  "hash": "508d1ac6571d475f062ebd1f0701ebe2",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Kokkonuts wiki homepage\"\nformat: html\neditor: source\nengine: knitr\n---\n\n\n<!--- below block is for justifying text --->\n\n::: {.cell}\n<style type=\"text/css\">\n.justify {\n  text-align: justify\n}\n</style>\n:::\n\n\n::: {.justify}\n\n## Kokkonuts wiki\n\nThe purpose of this wiki is to collate useful information and technical knowledge. For now, I (shikhara) am just porting some notebooks I already had. Will hopefully flesh out the wiki later.\n\n![](assets/img/orange_pony.png)\n\n\n:::",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Kokkonuts wiki homepage\"\nformat: html\neditor: source\nengine: knitr\n---\n\n\n<!--- below block is for justifying text --->\n\n::: {.cell}\n<style type=\"text/css\">\n.justify {\n  text-align: justify\n}\n</style>\n:::\n\n\n::: {.justify}\n\n## Kokkonuts wiki\n\nThe purpose of this wiki is to collate useful information and technical knowledge. For now, I (shikhara) am just porting some notebooks I already had. Will hopefully flesh out the wiki later.\n\nTo go back to the kokkonutscase repository of scripts, click [here](https://github.com/Kokkonut-case).\n<br>\nTo visit the kokkonuts lab group webpage, click [here](https://www.kokkonuts.org/).\n<br>\n\n![](assets/img/orange_pony.png)\n\n\n:::",
+    "supporting": [
+      "homepage_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
