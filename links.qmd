@@ -5,6 +5,8 @@ editor: source
 engine: knitr
 ---
 
+- [An EEB napkin](https://thepandalorian.github.io/EEB_napkin/EEB_napkin.pdf), my (Shikhara's) attempt at making a version of Evan Chen's [infintely large napkin](https://web.evanchen.cc/napkin.html) for theoretical ecology and evolutionary biology
+
 ## Data visualization
 
 - [ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
