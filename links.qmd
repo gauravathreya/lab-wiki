@@ -5,7 +5,8 @@ editor: source
 engine: knitr
 ---
 
-- [An EEB napkin](https://thepandalorian.github.io/EEB_napkin/EEB_napkin.pdf), my (Shikhara's) attempt at making a version of Evan Chen's [infintely large napkin](https://web.evanchen.cc/napkin.html) for theoretical ecology and evolutionary biology
+- [An EEB napkin](https://thepandalorian.github.io/EEB_napkin/EEB_napkin.pdf), my (Shikhara's) attempt at making a version of Evan Chen's [infintely large napkin](https://web.evanchen.cc/napkin.html) for theoretical ecology and evolutionary biology.
+- [A collection of beautiful mathematical proofs and elegant proof ideas](assets/pdf/useful_proof_ideas.pdf).
 
 ## Data visualization
 

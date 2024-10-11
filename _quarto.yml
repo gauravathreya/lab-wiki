@@ -16,6 +16,8 @@ website:
         contents:
         - section: "General math"
           contents:
+            - text: "Clever proofs and useful proof ideas"
+              href: assets/pdf/useful_proof_ideas.pdf
             - text: "Nonlinear dynamics"
               href: technical/math_notebooks/NLD.ipynb
         - section: "Evolutionary game theory examples"
