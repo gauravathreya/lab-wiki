@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - assets/pdf/useful_proof_ideas.pdf
+
 
 website:
   title: "Kokkonuts wiki and resources"
