@@ -16,7 +16,7 @@ Details of the talks:
 
 ### Schedule 2025
 
-The dates below are for every second Wednesday starting the week of 13 January, upto and including the month of June. 
+The dates below are for every second Wednesday starting the week of 27 January, upto and including the month of April (note the change in dates because we have switched to Wednesday lab meetings from Thursday). 
 
 The exact day of the week when we have our lab meeting is variable, but usually Thursday. So this table is made assuming that the meeting is by default on Thursday when it has not been decided otherwise. Changes will be made as necessary.
 
@@ -35,6 +35,8 @@ The exact day of the week when we have our lab meeting is variable, but usually 
 | 9 April    | Victor       | 
 | 16 April    |  \-   | 
 | 23 April       |  Margaux   |
-| 30 April       | \-    | 
-
+| 7 May       | \-    | 
+| 14 May       | \-    | 
+| 21 May       | \-    | 
+| 28 May       | \-    | 
 
